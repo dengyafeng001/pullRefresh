@@ -16,7 +16,6 @@
     PullRefreshView *viewPullDown;
     LoadMoreView *loadMore;
 }
-
 @end
 
 @implementation RefreshControl
@@ -24,6 +23,11 @@
 - (void)dealloc
 {
     NSLog(@"RefreshControl dealloc");
+}
+- (id)init
+{
+    self = [super init];
+    return self;
 }
 - (void)listenScrollView:(UIScrollView *)scrollView
 {
@@ -35,6 +39,7 @@
 {
     [scrollView removeObserver:self forKeyPath:@"contentOffset"];
     [scrollView removeObserver:self forKeyPath:@"contentSize"];
+    
 }
 
 - (void)observeValueForKeyPath:(nullable NSString *)keyPath ofObject:(nullable id)object change:(nullable NSDictionary<NSString*, id> *)change context:(nullable void *)context
@@ -51,13 +56,13 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGFloat offy = scrollView.contentOffset.y;
-    if (_pullDownEnabled && offy < 0)
+    if (_pullDownEnabled && offy < 0 - scrollView.contentInset.top)
     {
         if (scrollView.isDragging)
         {
             if (viewPullDown.state != PullRefreshLoading)
             {
-                if (offy < - 40)
+                if (offy < -40 - scrollView.contentInset.top)
                 {
                     [viewPullDown setState:PullRefreshPulling];
                 }
@@ -162,7 +167,7 @@
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.2];
     UIEdgeInsets edge = listenScrollView.contentInset;
-    edge.top = 40;
+    edge.top += 40;
     listenScrollView.contentInset = edge;
     [UIView commitAnimations];
     
@@ -180,7 +185,7 @@
             [UIView beginAnimations:nil context:NULL];
             [UIView setAnimationDuration:0.3];
             UIEdgeInsets edge = listenScrollView.contentInset;
-            edge.top = 0;
+            edge.top -= 40;
             listenScrollView.contentInset = edge;
             [UIView commitAnimations];
         });

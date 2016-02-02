@@ -19,9 +19,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view setLayoutMargins:UIEdgeInsetsZero];
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    
     // Do any additional setup after loading the view.
     //1.在开启下拉或者上拉前调用
     [self.tableView setup];
