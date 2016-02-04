@@ -62,7 +62,7 @@
         {
             if (viewPullDown.state != PullRefreshLoading)
             {
-                if (offy < -40 - scrollView.contentInset.top)
+                if (offy < -65 - scrollView.contentInset.top)
                 {
                     [viewPullDown setState:PullRefreshPulling];
                 }
@@ -113,7 +113,7 @@
     {
         if (!viewPullDown)
         {
-            CGRect rviewpulldown = CGRectMake(0, -40, listenScrollView.frame.size.width, 40);
+            CGRect rviewpulldown = CGRectMake(0, -60, listenScrollView.frame.size.width, 60);
             viewPullDown = [[PullRefreshView alloc] initWithFrame:rviewpulldown];
             viewPullDown.autoresizingMask = UIViewAutoresizingFlexibleWidth;
             [listenScrollView addSubview:viewPullDown];
@@ -167,7 +167,7 @@
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.2];
     UIEdgeInsets edge = listenScrollView.contentInset;
-    edge.top += 40;
+    edge.top += 60;
     listenScrollView.contentInset = edge;
     [UIView commitAnimations];
     
@@ -185,7 +185,7 @@
             [UIView beginAnimations:nil context:NULL];
             [UIView setAnimationDuration:0.3];
             UIEdgeInsets edge = listenScrollView.contentInset;
-            edge.top -= 40;
+            edge.top -= 60;
             listenScrollView.contentInset = edge;
             [UIView commitAnimations];
         });
