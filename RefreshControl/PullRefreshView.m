@@ -46,6 +46,18 @@
     }
     return self;
 }
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    CGRect rect = _arrowImage.frame;
+    rect.origin.x = self.frame.size.width / 2.0 - 70;
+    _arrowImage.frame = rect;
+    
+    rect = _activityView.frame;
+    rect.origin.x = self.frame.size.width / 2.0 - 75;
+    _activityView.frame = rect;
+}
 - (void)setState:(PullRefreshState)state
 {
     _state = state;

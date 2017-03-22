@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "pullRefresh"
-  s.version      = "1.0.5"
+  s.version      = "1.0.6"
   s.summary      = "扩展UITableView使其具体下拉刷新和上拉获取更多的功能"
   s.description  = "扩展UITableView使其具体下拉刷新和上拉获取更多的功能,仅需几行代码就能实现TableView的下拉刷新和上拉获取更多"
   s.homepage     = "https://github.com/dengyafeng001/pullRefresh"
