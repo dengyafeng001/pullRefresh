@@ -1,6 +1,6 @@
 # 功能介绍
 扩展UITableView使其具体下拉刷新和上拉获取更多的功能，属性在程序运行过程中可根据情况动态改变
-# 支持Cocoapods
+# 支持CocoaPods
 pod 'pullRefresh', '~> 1.0.4'
 # 如何使用
     //1.在开启下拉或者上拉前调用
